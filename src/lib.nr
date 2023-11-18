@@ -16,7 +16,7 @@ struct LWEParams {
 // Learning with errors is a foundational component in FHE encryption
 // This function proves the encryption of a w, 
 // We assume that plaintext has already been shifted above error
-fn encrypt_lwe<N, M>(a_samples: [u32; N], sk: [u32; N], e: u32, plaintext: u32) -> [u32; M] {
+pub fn encrypt_lwe<N, M>(a_samples: [u32; N], sk: [u32; N], e: u32, plaintext: u32) -> [u32; M] {
 
     // TODO: assert error guassian sample is correct
 
@@ -35,7 +35,7 @@ fn encrypt_lwe<N, M>(a_samples: [u32; N], sk: [u32; N], e: u32, plaintext: u32) 
 }
 
 // Decrypt learning with errors function
-fn decrypt_lwe<N,M>(ciphertext: [u32; M], sk: [u32; N]) -> u32 {
+pub fn decrypt_lwe<N,M>(ciphertext: [u32; M], sk: [u32; N]) -> u32 {
     let mut a_samples: [u32; N] = [0; N];
     for i in 0..N {
         a_samples[i] = ciphertext[i];
